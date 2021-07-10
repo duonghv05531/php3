@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +11,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// use Illuminate\Routing\Route;
+
+// use Illuminate\Routing\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/users', 'UserController');
+Route::resource('/categories', 'CategoryController');
+Route::resource('/products', 'ProductController');
+Route::resource('/admin', 'HomeController');
+Route::resource('/category', 'CategoryController');
+Route::resource('/product', 'ProductController');
