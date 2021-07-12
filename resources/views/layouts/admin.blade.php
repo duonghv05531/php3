@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
-
+    <link href="{{asset('img/favicon.ico')}}" rel="icon">
+    <link href="{{asset('lib/flaticon/font/flaticon.css')}}" rel="stylesheet">
     <!-- Google Font: Source Sans Pro -->
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -221,7 +222,7 @@
                             <a href="{{route('category.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
-                                    Categories
+                                    Danh mục
                                     <span class="badge badge-info right">6</span>
                                 </p>
                             </a>
@@ -244,7 +245,16 @@
                             <a href="{{route('product.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
-                                    Product
+                                    Sản phẩm
+                                    <span class="badge badge-info right">6</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('service.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    Dịch vụ
                                     <span class="badge badge-info right">6</span>
                                 </p>
                             </a>

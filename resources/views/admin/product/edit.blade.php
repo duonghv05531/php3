@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('title','Sửa sản phẩm')
-@section('header', 'Sửa sản phẩm')
 @section('content')
 <div class="col-md-6" style="margin: auto;">
     <form action="{{route('product.update',$pro->id)}}" method="POST" role="form" enctype="multipart/form-data">
@@ -26,7 +25,7 @@
         </div>
         <div class="form-group">
             <label for="">Ảnh</label><br>
-            <img src="{{asset("$pro->image")}}" alt=""><br><br>
+            <img class="w-100" src="{{asset("$pro->image")}}" alt=""><br><br>
             <input name="image" type="file" class="form-control" id="">
             <input name="image" type="hidden" value="{{$pro->image}}">
         </div>

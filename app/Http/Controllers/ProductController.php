@@ -43,10 +43,12 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $pro = new Product;
-        $file = $request->file('image');
-        $img = 'img/product/' . time() . '.' . $file->getClientOriginalExtension();
-        $request->image->move(public_path('img/product'), $img);
-        $pro->image = $img;
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $img = 'img/product/' . time() . '.' . $file->getClientOriginalExtension();
+            $request->image->move(public_path('img/product'), $img);
+            $pro->image = $img;
+        }
         $pro->name = $request->name;
         $pro->cate_id = $request->cate_id;
         $pro->price = $request->price;
