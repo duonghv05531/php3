@@ -20,7 +20,10 @@ class ProductController extends Controller
     }
     public function index()
     {
-        $pro = Product::all();
+        $pro = Product::paginate(15);
+        if ($key = request()->key) {
+            $pro = Product::where('name', 'like', '%' . $key . '%')->paginate(10);
+        }
         return view('admin/product.list', ['pro' => $pro]);
     }
 
@@ -115,6 +118,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd($id);
+        $pro = Product::find($id);
+        $pro->delete();
+        return redirect()->route('product.index');
     }
 }

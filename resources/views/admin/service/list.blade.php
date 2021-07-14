@@ -23,11 +23,11 @@
             <td>{{$s->desc}}</td>
             <td>{{$s->price}}</td>
             <td>
-                <form action="{{asset('')}}service/$s->id" method="POST">
+                <form action="{{route('service.destroy',$s->id)}}" method="POST">
                     {{@csrf_field()}}
-                    {{@method_field('PUT')}}
-                    <button class="btn btn-danger" type="submit" onclick="return confirm('Xác nhận xóa danh mục này?')">
-                        Xóa
+                    {{@method_field('delete')}}
+                    <button class="btn btn-danger" type="submit">
+                        <i class="trash"></i>
                     </button>
                 </form>
             </td>

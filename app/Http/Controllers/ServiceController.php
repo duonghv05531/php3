@@ -25,7 +25,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/service.create');
     }
 
     /**
@@ -36,7 +36,13 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $service = new Service;
+        $service->name = $request->name;
+        $service->image = $request->image;
+        $service->desc = $request->desc;
+        $service->price = $request->price;
+        $service->save();
+        return redirect()->route('service.index');
     }
 
     /**
@@ -58,7 +64,8 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service = Service::find($id);
+        return view('admin/service.edit');
     }
 
     /**
@@ -81,6 +88,8 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $service = Service::find($id);
+        $service->delete();
+        return redirect()->route('service.index');
     }
 }

@@ -11,10 +11,6 @@
 |
 */
 
-// use Illuminate\Routing\Route;
-
-// use Illuminate\Routing\Route;
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,13 +21,25 @@ Route::get('/product', 'WelcomeController@product')->name('product');
 Route::get('/contact', 'WelcomeController@contact')->name('contact');
 
 
+Route::group(['prefix' => 'admin'], function () {
 
+    // Route::resources([
+    //     'users' => 'UserController',
+    //     'categories' => 'CategoryController',
+    //     'products' => 'ProductController',
+    //     'home' => 'HomeController',
+    //     'category' => 'CategoryController',
+    //     'setting' => 'SettingController',
+    //     'setting' => 'SettingController',
+    //     'service' => 'ServiceController'
+    // ]);
 
-Route::resource('admin/users', 'UserController');
-Route::resource('admin/categories', 'CategoryController');
-Route::resource('admin/products', 'ProductController');
-Route::resource('admin/home', 'HomeController');
-Route::resource('admin/category', 'CategoryController');
-Route::resource('admin/product', 'ProductController');
-Route::resource('admin/setting', 'SettingController');
-Route::resource('admin/service', 'ServiceController');
+    Route::resource('users', 'UserController');
+    Route::resource('categories', 'CategoryController');
+    Route::resource('products', 'ProductController');
+    Route::resource('home', 'HomeController');
+    Route::resource('category', 'CategoryController');
+    Route::resource('product', 'ProductController');
+    Route::resource('setting', 'SettingController');
+    Route::resource('service', 'ServiceController');
+});

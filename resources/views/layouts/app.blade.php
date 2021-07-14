@@ -79,7 +79,7 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu m-0">
-                        <a href="price.html" class="dropdown-item">Alo</a>
+                        <a href="{{route('home.index')}}" class="dropdown-item">Admin</a>
                     </div>
                 </div>
                 <a href="{{route('contact')}}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Liên hệ<i class="bi bi-arrow-right"></i></a>
