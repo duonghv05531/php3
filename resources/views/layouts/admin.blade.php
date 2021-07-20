@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
-
+    <link href="{{asset('img/favicon.ico')}}" rel="icon">
+    <link href="{{asset('lib/flaticon/font/flaticon.css')}}" rel="stylesheet">
     <!-- Google Font: Source Sans Pro -->
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -219,10 +220,10 @@
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="{{route('category.index')}}" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
+                                <i class="nav-icon fas fa-folder"></i>
                                 <p>
-                                    Categories
-                                    <span class="badge badge-info right">6</span>
+                                    Danh mục
+                                    <!-- <span class="badge badge-info right">6</span> -->
                                 </p>
                             </a>
                             <!-- <ul class="nav nav-treeview">
@@ -242,10 +243,46 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('product.index')}}" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
+                                <i class="nav-icon fas fa-dumpster"></i>
                                 <p>
-                                    Product
-                                    <span class="badge badge-info right">6</span>
+                                    Sản phẩm
+                                    <!-- <span class="badge badge-info right">6</span> -->
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('service.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-handshake"></i>
+                                <p>
+                                    Dịch vụ
+                                    <!-- <span class="badge badge-info right">6</span> -->
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('customer.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-male"></i>
+                                <p>
+                                    Khách hàng
+                                    <!-- <span class="badge badge-info right">6</span> -->
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('user.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-user-alt"></i>
+                                <p>
+                                    Nhân viên
+                                    <!-- <span class="badge badge-info right">6</span> -->
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('user.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-cogs"></i>
+                                <p>
+                                    Cài đặt
+                                    <!-- <span class="badge badge-info right">6</span> -->
                                 </p>
                             </a>
                         </li>
@@ -339,6 +376,7 @@
     <script src="{{asset('dist/js/demo.js')}}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+    @include('layouts.js')
 </body>
 
 </html>

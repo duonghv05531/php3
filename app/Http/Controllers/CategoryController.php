@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\Category\StoreRequest;
+use App\Http\Requests\Category\UpdateRequest;
 
 class CategoryController extends Controller
 {
@@ -14,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $cate = Category::all();
+        $cate = Category::orderBy('id', 'desc')->search()->get();
         return view('admin/category.list', ['cate' => $cate]);
     }
 
@@ -34,12 +36,12 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        $cate = new Category;
-        $cate->name = $request->name;
-        $cate->save();
-        return redirect()->route('category.index');
+
+        if (Category::create($request->all())) {
+            return redirect()->route('category.index');
+        }
     }
 
     /**
@@ -72,9 +74,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $cate = Category::find($id);
+
         $cate->name = $request->name;
         $cate->save();
         return redirect()->route('category.index');

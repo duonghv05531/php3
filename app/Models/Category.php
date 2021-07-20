@@ -11,4 +11,15 @@ class Category extends Model
     public $fillable = [
         'name'
     ];
+    public function product()
+    {
+        return $this->hasMany(Product::class, 'cate_id', 'id');
+    }
+    public function scopeSearch($query)
+    {
+        if ($key = request()->key) {
+            $query = $query->where('name', 'like', '%' . $key . '%');
+        }
+        return $query;
+    }
 }
