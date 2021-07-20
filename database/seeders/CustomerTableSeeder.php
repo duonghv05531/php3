@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Customer;
 use Illuminate\Database\Seeder;
 use Faker\Factory as FakerFactory;
 
-class UserTableSeeder extends Seeder
+class CustomerTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,16 +16,14 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $faker = FakerFactory::create();
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $data = [
                 'name' => $faker->name,
+                'phone_number' => $faker->phoneNumber,
                 'email' => $faker->email,
-                'password' => '$2y$10$oVJ04r5sapureN09Ql77oOxNNvSicJBKLvSakdk/isOqqB8YNKLl2',
-                'address' => $faker->address,
-                'gender' => rand(1, 2),
-                'role' => rand(1, 3)
+                'address' => $faker->address
             ];
-            User::insert($data);
+            Customer::insert($data);
         }
     }
 }

@@ -19,6 +19,7 @@ Route::get('/about', 'WelcomeController@about')->name('about');
 Route::get('/service', 'WelcomeController@service')->name('service');
 Route::get('/product', 'WelcomeController@product')->name('product');
 Route::get('/contact', 'WelcomeController@contact')->name('contact');
+Route::get('/cate/{id}', 'WelcomeController@category')->name('cate');
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -42,4 +43,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('product', 'ProductController');
     Route::resource('setting', 'SettingController');
     Route::resource('service', 'ServiceController');
+    Route::resource('customer', 'CustomerController');
+    Route::resource('user', 'UserController');
 });

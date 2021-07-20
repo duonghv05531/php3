@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\Product\StoreRequest;
+use App\Http\Requests\Product\UpdateRequest;
 
 class ProductController extends Controller
 {
@@ -43,20 +45,23 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        $pro = new Product;
-        if ($request->file('image')) {
-            $file = $request->file('image');
-            $img = 'img/product/' . time() . '.' . $file->getClientOriginalExtension();
-            $request->image->move(public_path('img/product'), $img);
-            $pro->image = $img;
-        }
-        $pro->name = $request->name;
-        $pro->cate_id = $request->cate_id;
-        $pro->price = $request->price;
-        $pro->quantity = $request->quantity;
-        $pro->save();
+        $file = $request->file('file_upload');
+        $ext = $request->file_upload->extension();
+        $img = 'img/product/' . time() . '-' . '.' . $ext;
+        $file->move(public_path('img/product'), $img);
+        $request->merge(['image' => $img]);
+        // $pro->image = $img;
+
+        // $pro->name = $request->name;
+        // $pro->cate_id = $request->cate_id;
+        // $pro->price = $request->price;
+        // $pro->quantity = $request->quantity;
+        // $pro->sort_desc = $request->sort_desc;
+        // $pro->detail = $request->detail;
+        // $pro->save();
+        Product::create($request->all());
         return redirect()->route('product.index');
     }
 
@@ -90,23 +95,28 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $pro = Product::find($id);
-        if ($request->file('image')) {
-            $file = $request->file('image');
-            // $img = 'img/product' . time() . '.' . $file->getClientOriginalExtension();
-            $img = 'img/product/' . time() . '.' . $file->getClientOriginalExtension();
-            $request->image->move(public_path('img/product'), $img);
+        if ($request->has('file_upload')) {
+            $file = $request->file('file_upload');
+            $ext = $request->file_upload->extension();
+            $img = 'img/product/' . time() . '-' . '.' . $ext;
+            $file->move(public_path('img/product'), $img);
+            $request->merge(['image' => $img]);
         } else {
             $img = $request->image;
+            $request->merge(['image' => $img]);
         }
-        $pro->image = $img;
-        $pro->name = $request->name;
-        $pro->cate_id = $request->cate_id;
-        $pro->price = $request->price;
-        $pro->quantity = $request->quantity;
-        $pro->save();
+        // $pro->image = $img;
+        // $pro->name = $request->name;
+        // $pro->cate_id = $request->cate_id;
+        // $pro->price = $request->price;
+        // $pro->quantity = $request->quantity;
+        // $pro->sort_desc = $request->sort_desc;
+        // $pro->detail = $request->detail;
+        // $pro->save();
+        $pro->update($request->all());
         return redirect()->route('product.index');
     }
 
@@ -118,9 +128,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
         $pro = Product::find($id);
         $pro->delete();
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('msc', 'Xóa thành công');
     }
 }

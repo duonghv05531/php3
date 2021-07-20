@@ -220,10 +220,10 @@
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="{{route('category.index')}}" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
+                                <i class="nav-icon fas fa-folder"></i>
                                 <p>
                                     Danh mục
-                                    <span class="badge badge-info right">6</span>
+                                    <!-- <span class="badge badge-info right">6</span> -->
                                 </p>
                             </a>
                             <!-- <ul class="nav nav-treeview">
@@ -243,19 +243,46 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('product.index')}}" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
+                                <i class="nav-icon fas fa-dumpster"></i>
                                 <p>
                                     Sản phẩm
-                                    <span class="badge badge-info right">6</span>
+                                    <!-- <span class="badge badge-info right">6</span> -->
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('service.index')}}" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
+                                <i class="nav-icon fas fa-handshake"></i>
                                 <p>
                                     Dịch vụ
-                                    <span class="badge badge-info right">6</span>
+                                    <!-- <span class="badge badge-info right">6</span> -->
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('customer.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-male"></i>
+                                <p>
+                                    Khách hàng
+                                    <!-- <span class="badge badge-info right">6</span> -->
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('user.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-user-alt"></i>
+                                <p>
+                                    Nhân viên
+                                    <!-- <span class="badge badge-info right">6</span> -->
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('user.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-cogs"></i>
+                                <p>
+                                    Cài đặt
+                                    <!-- <span class="badge badge-info right">6</span> -->
                                 </p>
                             </a>
                         </li>
@@ -314,7 +341,7 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-    @yield('js')
+
     <!-- jQuery -->
     <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -349,6 +376,7 @@
     <script src="{{asset('dist/js/demo.js')}}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+    @include('layouts.js')
 </body>
 
 </html>

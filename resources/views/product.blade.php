@@ -5,5 +5,8 @@
 @include('layouts.product')
 @include('layouts.offer')
 @include('layouts.pricing')
-
 @endsection
+
+@section('js')
+
+@stop()

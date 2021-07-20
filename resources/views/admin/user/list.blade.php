@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title','Sản phẩm')
-@section('header','Sản phẩm')
+@section('title','Nhân viên')
+@section('header','Nhân viên')
 @section('content')
 <?php
 if (isset($_GET['key'])) {
@@ -13,7 +13,7 @@ if (isset($_GET['key'])) {
     <div class="col-md-4">
         <form action="" class="form-inline">
             <div class="form-group">
-                <input class="form-control" name="key" placeholder="Tìm kiếm bằng tên sản phẩm" value="{{$key}}">
+                <input class="form-control" name="key" placeholder="Tìm kiếm bằng tên " value="{{$key}}">
             </div>
             <button type="submit" class="btn btn-primary">
                 <i class="fas fa-search"></i>
@@ -37,45 +37,40 @@ if (isset($_GET['key'])) {
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Tên sản phẩm</th>
-                <th>Danh mục</th>
-                <th>Ảnh</th>
-                <th>Giá sản phẩm</th>
-                <th>Số lượng</th>
-                <th>Mô tả tóm tắt</th>
-                <th>Mô tả</th>
-                <th>Lượt xem</th>
-                <th>Đánh giá</th>
-                <th>Người tạo</th>
+                <th>Tên nhân viên</th>
+                <th>Email</th>
+                <th>Địa chỉ</th>
+                <th>Giới tính</th>
+                <th>Chức vụ</th>
+
                 <th class="text-right">
-                    <a href="{{route('product.create')}}">
+                    <a href="{{route('customer.create')}}">
                         <i class="fas fa-plus-square fa-3x"></i>
                     </a>
                 </th>
             </tr>
         </thead>
         <tbody>
-            @foreach($pro as $p)
+            @foreach($user as $u)
             <tr>
-                <td>{{$p->id}}</td>
+                <td>{{$u->id}}</td>
+                <td>{{$u->name}}</td>
+                <td>{{$u->email}}</td>
+                <td>{{$u->address}}</td>
                 <td>
-                    {{$p->name}}</a>
+                    @if($u->gender === 1)
+                    <p>Nam</p>
+                    @else
+                    <p>Nữ</p>
+                    @endif
                 </td>
-                <td>{{$p->category->name}}</td>
-                <td><img src="{{asset($p->image)}}" alt="" width="100"></td>
-                <td>{{$p->price}}</td>
-                <td>{{$p->quantity}}</td>
-                <td>{{$p->sort_desc}}</td>
-                <td>{{$p->detail}}</td>
-                <td>{{$p->view}}</td>
-                <td>{{$p->star}}</td>
-                <td>{{$p->created_by}}</td>
+                <td>{{$u->roles->name}}</td>
                 <td class="text-right">
-                    <a class="btn btn-sm btn-warning" href="{{route('product.edit',$p->id)}}">
+                    <a class="btn btn-sm btn-warning" href="{{route('user.edit',$u->id)}}">
                         <i class="fas fa-edit"></i>
                     </a>
                     <br><br>
-                    <a href="{{route('product.destroy',$p->id)}}" class="btn btn-sm btn-danger btn-delete">
+                    <a href="{{route('user.destroy',$u->id)}}" class="btn btn-sm btn-danger btn-delete">
                         <i class="fas fa-trash "></i>
                     </a>
                 </td>
@@ -88,6 +83,6 @@ if (isset($_GET['key'])) {
         @method('DELETE')
     </form>
     <hr>
-    <div>{{$pro->appends(request()->all())->links()}}</div>
+    <div>{{$user->appends(request()->all())->links()}}</div>
 </div>
-@endsection
+@stop()

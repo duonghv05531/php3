@@ -75,13 +75,17 @@
                 <a href="{{route('welcome')}}" class="nav-item nav-link">Trang chủ</a>
                 <a href="{{route('about')}}" class="nav-item nav-link">Về chúng tôi</a>
                 <a href=" {{route('service')}}" class="nav-item nav-link">Dịch vụ</a>
-                <a href="{{route('product')}}" class="nav-item nav-link">Sản phẩm</a>
+
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sản phẩm</a>
                     <div class="dropdown-menu m-0">
-                        <a href="{{route('home.index')}}" class="dropdown-item">Admin</a>
+                        <a href="{{route('product')}}" class="dropdown-item">Tất cả sản phẩm</a>
+                        @foreach($category as $c)
+                        <a href="{{route('cate',$c->id)}}" class="dropdown-item">{{$c->name}}</a>
+                        @endforeach
                     </div>
                 </div>
+                <a href="{{route('home.index')}}" class="nav-item nav-link">Admin</a>
                 <a href="{{route('contact')}}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Liên hệ<i class="bi bi-arrow-right"></i></a>
             </div>
         </div>
@@ -109,6 +113,7 @@
 
     <!-- Template Javascript -->
     <script src="{{asset('js/main.js')}}"></script>
+    @yield('js')
 </body>
 
 </html>

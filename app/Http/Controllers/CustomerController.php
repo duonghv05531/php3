@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Customer;
+use App\Http\Requests\Customer\StoreRequest;
+use App\Http\Requests\Customer\UpdateRequest;
+use App\Models\Category;
 
-class UserController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +17,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::paginate(10);
+        $customer = Customer::orderBy('id', 'DESC')->paginate(15);
         if ($key = request()->key) {
-            $user = User::where('name', 'like', '%' . $key . '%')->paginate(10);
+            $customer = Customer::where('name', 'like', '%' . $key . '%')->orderBy('id', 'DESC')->paginate(10);
         }
-        return view('admin/user.list', ['user' => $user]);
+        return view('admin/customer.list', ['customer' => $customer]);
     }
 
     /**
@@ -28,7 +31,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.customer.create');
     }
 
     /**
@@ -37,9 +40,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        Customer::create($request->all());
+        return redirect()->route('customer.index');
     }
 
     /**

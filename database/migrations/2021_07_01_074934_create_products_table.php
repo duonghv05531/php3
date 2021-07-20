@@ -20,6 +20,11 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->integer('price');
             $table->integer('quantity');
+            $table->string('sort_desc');
+            $table->text('detail');
+            $table->integer('view')->nullable();
+            $table->integer('star')->nullable();
+            $table->string('created_by')->nullable();
             $table->timestamps();
         });
     }
